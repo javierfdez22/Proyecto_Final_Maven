@@ -15,12 +15,12 @@ public class CuentaBancaria {
     
     private String nombre;
     private double cantidad;
-    private LocalDate fechaCreacion;
+    private int annoCreacion;
 
-    public CuentaBancaria(String nombre, double cantidad, LocalDate fechaCreacion) {
+    public CuentaBancaria(String nombre, double cantidad, int annoCreacion) {
         this.nombre = nombre;
         this.cantidad = cantidad;
-        this.fechaCreacion = fechaCreacion;
+        this.annoCreacion = annoCreacion;
     }
 
     public String getNombre() {
@@ -31,8 +31,8 @@ public class CuentaBancaria {
         return cantidad;
     }
 
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
+    public int getAnnoCreacion() {
+        return annoCreacion;
     }
 
     public void setNombre(String nombre) {
@@ -43,8 +43,8 @@ public class CuentaBancaria {
         this.cantidad = cantidad;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFechaCreacion(int fechaCreacion) {
+        this.annoCreacion = fechaCreacion;
     }
     
     public double sacarDinero(String nombre, double dineroRetirado) {
@@ -53,6 +53,8 @@ public class CuentaBancaria {
         if (nombre.equals(getNombre())) {
             dineroRestante = getCantidad() - dineroRetirado;
             setCantidad(dineroRestante);
+        } else {
+            dineroRestante = getCantidad();
         }
         
         return dineroRestante;
@@ -64,6 +66,8 @@ public class CuentaBancaria {
         if (nombre.equals(getNombre())) {
             dineroActualizado = getCantidad() + dineroIntroducido;
             setCantidad(dineroActualizado);
+        } else {
+            dineroActualizado = getCantidad();
         }
         
         return dineroActualizado;
@@ -73,7 +77,9 @@ public class CuentaBancaria {
         int annos = 0;
         
         if (nombre.equals(getNombre())) {
-            annos =  fechaActual - getFechaCreacion().getYear();
+            annos =  fechaActual - getAnnoCreacion();
+        } else {
+            annos = getAnnoCreacion();
         }
         
         return annos;
