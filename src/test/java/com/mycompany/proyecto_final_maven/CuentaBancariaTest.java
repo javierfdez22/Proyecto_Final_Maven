@@ -87,7 +87,7 @@ public class CuentaBancariaTest {
         System.out.println("Test meterDinero erroneo");
         String nombre = "Alvaro";
         double dineroIntroducido = 639.57;
-        CuentaBancaria cuenta = new CuentaBancaria("Cuenta de Alvaro", 4500, 2003);
+        CuentaBancaria cuenta = new CuentaBancaria("Cuenta de", 4500, 2003);
         double expResult = 4500;
         double result = cuenta.meterDinero(nombre, dineroIntroducido);
         assertEquals(expResult, result);
